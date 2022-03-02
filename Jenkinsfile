@@ -2,11 +2,11 @@
 pipeline{
 
 	 environment {
-    	registry = "tongzahub/eks-jenkins-demo"
-    	registryCredential = 'docker-user-pass'
+    	registry = "mzprateep/eks-jenkin-demo"
+    	registryCredential = 'docker-prateep'
     	dockerImage = ''
 		region = "ap-southeast-1"
-		clusterName  = "arthit-devops-labs"
+		clusterName  = "prateep-labs"
   	}
 
 	agent any
