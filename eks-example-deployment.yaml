@@ -1,28 +1,23 @@
-kind: Deployment
-metadata:
-  name: eks-jenkin-demo
-  labels:
-    app: eks-jenkin-demo
-  namespace: default
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
+  26 lines (21 sloc)  395 Bytes
+
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: eks-jenkin-demo
+    labels:
       app: eks-jenkin-demo
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
-  template:
-    metadata:
-      labels:
+  spec:
+    replicas: 3
+    selector:
+      matchLabels:
         app: eks-jenkin-demo
-    spec:
-      containers:
-        - image: mzprateep/eks-jenkin-demo
-          imagePullPolicy: Always
-          name: eks-jenkin-demo
-          ports:
-            - containerPort: 8080
-              protocol: TCP
+    template:
+      metadata:
+        labels:
+          app: nginx
+      spec:
+        containers:
+          - name: eks-jenkin-demo
+            image: mzprateep/eks-jenkin-demo
+            ports:
+              - containerPort: 8080

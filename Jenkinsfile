@@ -53,7 +53,6 @@ pipeline{
 			// 	}
 			  withAWS(credentials: 'aws-prateep', region: 'ap-southeast-1') {
 
-
 				  sh "aws iam list-account-aliases"
 				  sh "aws eks --region $region update-kubeconfig --name $clusterName"
 
