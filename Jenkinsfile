@@ -51,7 +51,7 @@ pipeline{
 			// 	]]) {
    			// 		 // AWS Code
 			// 	}
-			  withAWS(credentials: 'eks-credentials', region: 'ap-southeast-1') {
+			  withAWS(credentials: 'aws-prateep', region: 'ap-southeast-1') {
 
 
 				  sh "aws iam list-account-aliases"
