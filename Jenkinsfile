@@ -71,16 +71,20 @@ pipeline{
         stage('eks deploy') {
 
 			steps {
+						  withAWS(credentials: 'aws-prateep', region: 'ap-southeast-1') {
+                            				  sh "aws eks --region $region update-kubeconfig --name $clusterName"
+                            				  sh 'kubectl get pods'
+                            				  sh 'kubectl get nodes'
+                            				  sh "kubectl apply -f eks-example-deployment.yaml"
+
+            			  }
 				sh 'echo Hello World'
 				sh 'kubectl get pods'
 //                 sh "sed -i 's/hellonodejs:latest/hellonodejs:eks/g' deploy.yaml"
 //                 sh 'kubectl apply -f eks-deployment.yaml'
                 // sh 'kubectl rollout restart deployment hello-world-nodejs'
-                			  sh "aws iam list-account-aliases"
-                				  sh "aws eks --region $region update-kubeconfig --name $clusterName"
-                				  sh 'kubectl get pods'
-                				  sh 'kubectl get nodes'
-                				  sh "kubectl apply -f eks-example-deployment.yaml"
+//                 			  sh "aws iam list-account-aliases"
+
 			}
 		}
 	}
