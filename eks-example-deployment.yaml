@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: eks-jenkin-demo
+  name: eks-jenkins-demo
   labels:
-    app: eks-jenkin-demo
+    app: eks-jenkins-demo
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: eks-jenkin-demo
+      app: eks-jenkins-demo
   template:
     metadata:
       labels:
